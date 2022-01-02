@@ -1,0 +1,67 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void printSpiral(int[][] ar)
+    {
+        int n=ar.length;
+        int m=ar[0].length;
+        int count=0,tne=m*n;
+        
+        int rmin=0;
+        int rmax=n-1;
+        int cmin=0;
+        int cmax=m-1;
+        while(count<tne)
+        {
+            //left boundary
+            for(int rows=rmin;rows<=rmax && count<tne;rows++)
+            {
+                System.out.println(ar[rows][cmin]);
+                count++;
+            }
+            cmin++;
+            //bottom boundary
+            for(int cols=cmin;cols<=cmax && count<tne;cols++)
+            {
+                System.out.println(ar[rmax][cols]);
+                count++;
+            }
+            rmax--;
+            //right boundary
+            for(int rows=rmax;rows>=rmin && count<tne;rows--)
+            {
+                System.out.println(ar[rows][cmax]);
+                count++;
+            }
+            cmax--;
+            //top boundary
+            for(int cols=cmax;cols>=cmin  && count<tne;cols--)
+            {
+                System.out.println(ar[rmin][cols]);
+                count++;
+            }
+            rmin++;
+        }
+        
+    }
+    public static void main(String[] args) throws Exception {
+        // write your code here
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int m=sc.nextInt();
+        int[][] ar=new int[n][m];
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<m;j++)
+            {
+                ar[i][j]=sc.nextInt();
+            }
+        }
+        printSpiral(ar);
+        
+    }
+    
+
+}
